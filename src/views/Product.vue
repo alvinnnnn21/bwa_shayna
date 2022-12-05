@@ -78,9 +78,7 @@
 import HeaderShayna from "@/components/HeaderShayna.vue";
 import FooterShayna from "@/components/FooterShayna.vue";
 import RelatedShayna from "@/components/RelatedShayna.vue";
-
 import carousel from "vue-owl-carousel";
-
 import axios from "axios";
 
 export default {
