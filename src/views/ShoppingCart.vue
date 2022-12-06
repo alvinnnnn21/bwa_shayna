@@ -198,7 +198,7 @@ export default {
 
       axios
         .post(
-          "http://shayna-backend.belajarkoding.com/api/checkout",
+          "http://shayna-env-1.eba-28qgxfym.ap-northeast-1.elasticbeanstalk.com/api/checkout",
           checkoutData
         )
         .then(() => this.$router.push("success"))

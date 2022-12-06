@@ -28,7 +28,7 @@
                 <div class="product-pic-zoom">
                   <img class="product-big-img" :src="gambar_default" alt />
                 </div>
-                <div class="product-thumbs" v-if="productDetails.galleries.length > 0">
+                <div class="product-thumbs" v-if="productDetails.galleries?.length > 0">
                   <carousel :dots="false" :nav="false" class="product-thumbs-track ps-slider">
                     <div
                       v-for="ss in productDetails.galleries"
@@ -97,10 +97,14 @@ export default {
     };
   },
   methods: {
+    log(data){
+      console.log(data);
+    },
     changeImage(urlImage) {
       this.gambar_default = urlImage;
     },
     setDataPicture(data) {
+      
       // replace object productDetails dengan data dari API
       this.productDetails = data;
       // replace value gambar default dengan data dari API (galleries)
@@ -128,13 +132,16 @@ export default {
         localStorage.removeItem('keranjangUser');
       }
     }
+    this.log("123");
     axios
-      .get("http://shayna-backend.belajarkoding.com/api/products", {
+      .get("http://shayna-env-1.eba-28qgxfym.ap-northeast-1.elasticbeanstalk.com/api/products", {
         params: {
           id: this.$route.params.id
         }
       })
-      .then(res => this.setDataPicture(res.data.data))
+      .then(res => {
+        this.setDataPicture(res.data.data.data[0])
+      })
       // eslint-disable-next-line no-console
       .catch(err => console.log(err));
   }
